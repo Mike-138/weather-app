@@ -71,6 +71,7 @@ const displayController = () => {
         const param = document.createElement("input");
         param.type = "text";
         param.id = "lon";
+        param.pattern = "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$";
         const container = document.createElement("div");
 
         container.append(label, param);
@@ -86,6 +87,7 @@ const displayController = () => {
         const param = document.createElement("input");
         param.type = "text";
         param.id = "lat";
+        param.pattern = "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$";
         const container = document.createElement("div");
 
         container.append(label, param);
