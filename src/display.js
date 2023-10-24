@@ -17,17 +17,23 @@ const displayController = () => {
 
   const getMainContent = () => _mainContent;
 
-  const _paramContainer = (() => {
-    const container = document.createElement("div");
+  const _mainFieldset = (() => {
+    const container = document.createElement("fieldset");
     container.classList.add("flex-col");
+
+    const legend = document.createElement("legend");
+    legend.textContent = "Search For The Weather";
+
+    container.append(legend);
     return container;
   })();
 
-  const getParamContainer = () => _paramContainer;
+  const getMainFieldset = () => _mainFieldset;
 
   const _cityNameInput = (() => {
     const label = document.createElement("label");
     label.textContent = "City Name";
+    label.classList.add("upper");
     label.setAttribute("for", "city");
 
     const param = document.createElement("input");
@@ -35,6 +41,7 @@ const displayController = () => {
     param.id = "city";
 
     const container = document.createElement("div");
+    container.classList.add("field");
     container.append(label, param);
     return container;
   })();
@@ -44,6 +51,7 @@ const displayController = () => {
   const _areaCodeInput = (() => {
     const label = document.createElement("label");
     label.textContent = "Area Code";
+    label.classList.add("upper");
     label.setAttribute("for", "area");
 
     const param = document.createElement("input");
@@ -51,6 +59,7 @@ const displayController = () => {
     param.id = "area";
 
     const container = document.createElement("div");
+    container.classList.add("field");
     container.append(label, param);
     return container;
   })();
@@ -59,7 +68,7 @@ const displayController = () => {
 
   const _coordinatesContainer = (() => {
     const container = document.createElement("div");
-    container.classList.add("flex-row");
+    container.classList.add("flex-row", "field");
     return container;
   })();
 
@@ -68,6 +77,7 @@ const displayController = () => {
   const _longitudeInput = (() => {
     const label = document.createElement("label");
     label.textContent = "Longitude";
+    label.classList.add("upper");
     label.setAttribute("for", "lon");
 
     const param = document.createElement("input");
@@ -86,6 +96,7 @@ const displayController = () => {
   const _latitudeInput = (() => {
     const label = document.createElement("label");
     label.textContent = "Latitude";
+    label.classList.add("upper");
     label.setAttribute("for", "lat");
 
     const param = document.createElement("input");
@@ -111,6 +122,7 @@ const displayController = () => {
   const _mainSubmit = (() => {
     const button = document.createElement("button");
     button.textContent = "Forecast";
+    button.classList.add("upper");
     return button;
   })();
 
@@ -118,14 +130,32 @@ const displayController = () => {
 
   // Order page elements
   const createMain = () => {
-    _coordinatesContainer.append(_longitudeInput, _latitudeInput);
-    _paramContainer.append(
+
+    // Create elements for styling
+    const makeDivider = (content) => {
+        const divider = document.createElement("div");
+        divider.textContent = content;
+        divider.classList.add("upper", "center", "small");
+        return divider;
+    }
+
+    // Create DOM tree
+    _coordinatesContainer.append(
+        _longitudeInput,
+        makeDivider("and"),
+        _latitudeInput
+    );
+
+    _mainFieldset.append(
       _cityNameInput,
+      makeDivider("or"),
       _areaCodeInput,
+      makeDivider("or"),
       _coordinatesContainer,
     );
+
     _mainSubmitContainer.append(_mainSubmit);
-    _mainContent.append(_paramContainer, _mainSubmitContainer);
+    _mainContent.append(_mainFieldset, _mainSubmitContainer);
     _main.append(_mainContent);
 
     return _main;
@@ -134,7 +164,7 @@ const displayController = () => {
   return {
     getMain,
     getMainContent,
-    getParamContainer,
+    getMainFieldset,
     getCityNameInput,
     getAreaCodeInput,
     getCoordinatesContainer,
