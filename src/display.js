@@ -1,140 +1,149 @@
 import "./style.css";
 
 const displayController = () => {
+  // Initialize page elements
+  const _main = (() => {
+    const main = document.createElement("main");
+    return main;
+  })();
 
-    // Initialize page elements
-    const _main = (() => {
-        const main = document.createElement("main");
-        return main;
-    })();
+  const getMain = () => _main;
 
-    const getMain = () => _main;
+  const _mainContent = (() => {
+    const mainContent = document.createElement("form");
+    mainContent.classList.add("flex-col");
+    return mainContent;
+  })();
 
-    const _mainContent = (() => {
-        const mainContent = document.createElement("form");
-        mainContent.classList.add("flex-col");
-        return mainContent;
-    })();
-    
-    const getMainContent = () => _mainContent;
+  const getMainContent = () => _mainContent;
 
-    const _paramContainer = (() => {
-        const container = document.createElement("div");
-        container.classList.add("flex-col");
-        return container;
-    })();
+  const _paramContainer = (() => {
+    const container = document.createElement("div");
+    container.classList.add("flex-col");
+    return container;
+  })();
 
-    const getParamContainer = () =>_paramContainer;
+  const getParamContainer = () => _paramContainer;
 
-    const _cityNameInput = (() => {
-        const label = document.createElement("label");
-        label.textContent = "City Name";
-        label.setAttribute("for", "city");
-        const param = document.createElement("input");
-        param.type = "text";
-        param.id = "city";
-        const container = document.createElement("div");
+  const _cityNameInput = (() => {
+    const label = document.createElement("label");
+    label.textContent = "City Name";
+    label.setAttribute("for", "city");
 
-        container.append(label, param);
-        return container;
-    })();
+    const param = document.createElement("input");
+    param.type = "text";
+    param.id = "city";
 
-    const getCityNameInput = () => _cityNameInput;
+    const container = document.createElement("div");
+    container.append(label, param);
+    return container;
+  })();
 
-    const _areaCodeInput = (() => {
-        const label = document.createElement("label");
-        label.textContent = "Area Code";
-        label.setAttribute("for", "area");
-        const param = document.createElement("input");
-        param.type = "text";
-        param.id = "area";
-        const container = document.createElement("div");
+  const getCityNameInput = () => _cityNameInput;
 
-        container.append(label, param);
-        return container;
-    })();
+  const _areaCodeInput = (() => {
+    const label = document.createElement("label");
+    label.textContent = "Area Code";
+    label.setAttribute("for", "area");
 
-    const getAreaCodeInput = () => _areaCodeInput;
+    const param = document.createElement("input");
+    param.type = "text";
+    param.id = "area";
 
-    const _coordinatesContainer = (() => {
-        const container = document.createElement("div");
-        container.classList.add("flex-row");
-        return container;
-    })();
+    const container = document.createElement("div");
+    container.append(label, param);
+    return container;
+  })();
 
-    const getCoordinatesContainer = () => _coordinatesContainer;
+  const getAreaCodeInput = () => _areaCodeInput;
 
-    const _longitudeInput = (() => {
-        const label = document.createElement("label");
-        label.textContent = "Longitude";
-        label.setAttribute("for", "lon");
-        const param = document.createElement("input");
-        param.type = "text";
-        param.id = "lon";
-        param.pattern = "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$";
-        const container = document.createElement("div");
+  const _coordinatesContainer = (() => {
+    const container = document.createElement("div");
+    container.classList.add("flex-row");
+    return container;
+  })();
 
-        container.append(label, param);
-        return container;
-    })();
+  const getCoordinatesContainer = () => _coordinatesContainer;
 
-    const getLongitudeInput = () => _longitudeInput;
+  const _longitudeInput = (() => {
+    const label = document.createElement("label");
+    label.textContent = "Longitude";
+    label.setAttribute("for", "lon");
 
-    const _latitudeInput = (() => {
-        const label = document.createElement("label");
-        label.textContent = "Latitude";
-        label.setAttribute("for", "lat")
-        const param = document.createElement("input");
-        param.type = "text";
-        param.id = "lat";
-        param.pattern = "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$";
-        const container = document.createElement("div");
+    const param = document.createElement("input");
+    param.type = "text";
+    param.id = "lon";
+    param.pattern =
+      "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$";
 
-        container.append(label, param);
-        return container;
-    })();
+    const container = document.createElement("div");
+    container.append(label, param);
+    return container;
+  })();
 
-    const getLatitudeInput = () => _latitudeInput;
+  const getLongitudeInput = () => _longitudeInput;
 
-    const _mainSubmitContainer = (() => {
-        const container = document.createElement("div");
-        return container;
-    })();
+  const _latitudeInput = (() => {
+    const label = document.createElement("label");
+    label.textContent = "Latitude";
+    label.setAttribute("for", "lat");
 
-    const getMainSubmitContainer = () => _mainSubmitContainer;
+    const param = document.createElement("input");
+    param.type = "text";
+    param.id = "lat";
+    param.pattern =
+      "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$";
 
-    const _mainSubmit = (() => {
-        const button = document.createElement("button");
-        return button;
-    })();
+    const container = document.createElement("div");
+    container.append(label, param);
+    return container;
+  })();
 
-    const getMainSubmit = () => _mainSubmit;
+  const getLatitudeInput = () => _latitudeInput;
 
-    // Order page elements
-    const createMain = () => {
+  const _mainSubmitContainer = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
 
-        _coordinatesContainer.append(_longitudeInput, _latitudeInput)
-        _paramContainer.append(_cityNameInput, _areaCodeInput, _coordinatesContainer);
-        _mainSubmitContainer.append(_mainSubmit);
-        _mainContent.append(_paramContainer, _mainSubmitContainer);
-        _main.append(_mainContent);
-        
-        return _main;
-    }
-    
-    return {
-        getMain,
-        getMainContent,
-        getParamContainer,
-        getCityNameInput,
-        getAreaCodeInput,
-        getCoordinatesContainer,
-        getLongitudeInput,
-        getLatitudeInput,
-        getMainSubmitContainer,
-        getMainSubmit,
-        createMain
-    };
-}
+  const getMainSubmitContainer = () => _mainSubmitContainer;
+
+  const _mainSubmit = (() => {
+    const button = document.createElement("button");
+    button.textContent = "Forecast";
+    return button;
+  })();
+
+  const getMainSubmit = () => _mainSubmit;
+
+  // Order page elements
+  const createMain = () => {
+    _coordinatesContainer.append(_longitudeInput, _latitudeInput);
+    _paramContainer.append(
+      _cityNameInput,
+      _areaCodeInput,
+      _coordinatesContainer,
+    );
+    _mainSubmitContainer.append(_mainSubmit);
+    _mainContent.append(_paramContainer, _mainSubmitContainer);
+    _main.append(_mainContent);
+
+    return _main;
+  };
+
+  return {
+    getMain,
+    getMainContent,
+    getParamContainer,
+    getCityNameInput,
+    getAreaCodeInput,
+    getCoordinatesContainer,
+    getLongitudeInput,
+    getLatitudeInput,
+    getMainSubmitContainer,
+    getMainSubmit,
+    createMain,
+  };
+};
 
 export default displayController;
