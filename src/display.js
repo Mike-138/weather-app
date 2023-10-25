@@ -1,21 +1,23 @@
 import "./style.css";
 
 const displayController = () => {
-  // Initialize page elements
+  // Initialize page structure
   const _main = (() => {
     const main = document.createElement("main");
+    main.classList.add("flex-col");
     return main;
   })();
 
   const getMain = () => _main;
 
-  const _mainContent = (() => {
-    const mainContent = document.createElement("form");
-    mainContent.classList.add("flex-col");
-    return mainContent;
+  // Initialize form elements
+  const _mainForm = (() => {
+    const container = document.createElement("form");
+    container.classList.add("flex-col");
+    return container;
   })();
 
-  const getMainContent = () => _mainContent;
+  const getMainForm = () => _mainForm;
 
   const _mainFieldset = (() => {
     const container = document.createElement("fieldset");
@@ -128,8 +130,8 @@ const displayController = () => {
 
   const getMainSubmit = () => _mainSubmit;
 
-  // Order page elements
-  const createMain = () => {
+  // Order form elements
+  const createMainForm = () => {
 
     // Create elements for styling
     const makeDivider = (content, color) => {
@@ -156,15 +158,15 @@ const displayController = () => {
     );
 
     _mainSubmitContainer.append(_mainSubmit);
-    _mainContent.append(_mainFieldset, _mainSubmitContainer);
-    _main.append(_mainContent);
+    _mainForm.append(_mainFieldset, _mainSubmitContainer);
+    _main.append(_mainForm);
 
     return _main;
   };
 
   return {
     getMain,
-    getMainContent,
+    getMainForm,
     getMainFieldset,
     getCityNameInput,
     getAreaCodeInput,
@@ -173,7 +175,7 @@ const displayController = () => {
     getLatitudeInput,
     getMainSubmitContainer,
     getMainSubmit,
-    createMain,
+    createMainForm,
   };
 };
 
