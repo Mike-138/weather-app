@@ -4,7 +4,7 @@ const displayController = () => {
   // Initialize page structure
   const _main = (() => {
     const main = document.createElement("main");
-    main.classList.add("flex-col");
+    main.classList.add("flex-row");
     return main;
   })();
 
@@ -19,7 +19,7 @@ const displayController = () => {
 
   const getMainForm = () => _mainForm;
 
-  const _mainFieldset = (() => {
+  const _formFieldset = (() => {
     const container = document.createElement("fieldset");
     container.classList.add("flex-col");
 
@@ -30,7 +30,7 @@ const displayController = () => {
     return container;
   })();
 
-  const getMainFieldset = () => _mainFieldset;
+  const getFormFieldset = () => _formFieldset;
 
   const _cityNameInput = (() => {
     const label = document.createElement("label");
@@ -114,24 +114,24 @@ const displayController = () => {
 
   const getLatitudeInput = () => _latitudeInput;
 
-  const _mainSubmitContainer = (() => {
+  const _formSubmitContainer = (() => {
     const container = document.createElement("div");
     return container;
   })();
 
-  const getMainSubmitContainer = () => _mainSubmitContainer;
+  const getFormSubmitContainer = () => _formSubmitContainer;
 
-  const _mainSubmit = (() => {
+  const _formSubmit = (() => {
     const button = document.createElement("button");
     button.textContent = "Forecast";
     button.classList.add("upper");
     return button;
   })();
 
-  const getMainSubmit = () => _mainSubmit;
+  const getFormSubmit = () => _formSubmit;
 
   // Order form elements
-  const createMainForm = () => {
+  const _createMainForm = () => {
 
     // Create elements for styling
     const makeDivider = (content, color) => {
@@ -149,7 +149,7 @@ const displayController = () => {
         _latitudeInput
     );
 
-    _mainFieldset.append(
+    _formFieldset.append(
       _cityNameInput,
       makeDivider("or", "orange"),
       _areaCodeInput,
@@ -157,25 +157,202 @@ const displayController = () => {
       _coordinatesContainer,
     );
 
-    _mainSubmitContainer.append(_mainSubmit);
-    _mainForm.append(_mainFieldset, _mainSubmitContainer);
-    _main.append(_mainForm);
+    _formSubmitContainer.append(_formSubmit);
+    _mainForm.append(_formFieldset, _formSubmitContainer);
+
+    return _mainForm;
+  };
+
+  // Initialize response elements
+  const _mainResponse = (() => {
+    const container = document.createElement("div");
+    container.classList.add("flex-col");
+    return container;
+  })();
+
+  const getMainResponse = () => _mainResponse;
+
+  const _responseHeaderContainer = (() => {
+    const container = document.createElement("div");
+    container.classList.add("flex-row");
+    return container;
+  })();
+
+  const getResponseHeaderContainer = () => _responseHeaderContainer;
+
+  const _responseLocation = (() => {
+    const container = document.createElement("h1");
+    return container;
+  })();
+
+  const getResponseLocation = () => _responseLocation;
+
+  const _responseDate = (() => {
+    const container = document.createElement("h2");
+    return container;
+  })();
+
+  const getResponseDate = () => _responseDate;
+
+  const _responseContentContainer = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseContentContainer = () => _responseContentContainer;
+
+  const _responseConditionIcon = (() => {
+    const container = document.createElement("img");
+    return container;
+  })();
+
+  const getResponseConditionIcon = () => _responseConditionIcon;
+
+  const _responseConditionText = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseConditionText = () => _responseConditionText;
+
+  const _responseTemperature = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseTemperature = () => _responseTemperature;
+
+  const _responseFeelsLike = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseFeelsLike = () => _responseFeelsLike;
+
+  const _responseWind = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseWind = () => _responseWind;
+
+  const _responseForecastContainer = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastContainer = () => _responseForecastContainer;
+
+  const _responseForecastedConditionIcon = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastedConditionIcon = () => _responseForecastedConditionIcon;
+
+  const _responseForecastedConditionText = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastedConditionText = () => _responseForecastedConditionText;
+
+  const _responseForecastedMaxTemperature = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastedMaxTemperature = () => _responseForecastedMaxTemperature;
+
+  const _responseForecastedMinTemperature = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastedMinTemperature = () => _responseForecastedMinTemperature;
+
+  const _responseForecastedWind = (() => {
+    const container = document.createElement("div");
+    return container;
+  })();
+
+  const getResponseForecastedWind = () => _responseForecastedWind;
+
+  // Order response elements
+  const _createMainResponse = () => {
+
+    // Create DOM tree
+    _responseHeaderContainer.append(
+        _responseLocation,
+        _responseDate
+    );
+
+    _responseContentContainer.append(
+      _responseConditionIcon,
+      _responseTemperature,
+      _responseConditionText,
+      _responseFeelsLike,
+      _responseWind
+  );
+
+  _responseForecastContainer.append(
+    _responseForecastedConditionIcon,
+    _responseForecastedConditionText,
+    _responseForecastedMaxTemperature,
+    _responseForecastedMinTemperature,
+    _responseForecastedWind
+);
+
+    _mainResponse.append(
+      _responseHeaderContainer,
+      _responseContentContainer,
+      _responseForecastContainer
+    );
+
+    return _mainResponse;
+  };
+
+  const build = () => {
+
+    const form = _createMainForm();
+    const response = _createMainResponse();
+
+    _main.append(
+      form,
+      response
+    );
 
     return _main;
-  };
+  }
 
   return {
     getMain,
     getMainForm,
-    getMainFieldset,
+    getFormFieldset,
     getCityNameInput,
     getAreaCodeInput,
     getCoordinatesContainer,
     getLongitudeInput,
     getLatitudeInput,
-    getMainSubmitContainer,
-    getMainSubmit,
-    createMainForm,
+    getFormSubmitContainer,
+    getFormSubmit,
+    getMainResponse,
+    getResponseHeaderContainer,
+    getResponseLocation,
+    getResponseDate,
+    getResponseContentContainer,
+    getResponseConditionIcon,
+    getResponseConditionText,
+    getResponseTemperature,
+    getResponseFeelsLike,
+    getResponseWind,
+    getResponseForecastContainer,
+    getResponseForecastedConditionIcon,
+    getResponseForecastedConditionText,
+    getResponseForecastedMaxTemperature,
+    getResponseForecastedMinTemperature,
+    getResponseForecastedWind,
+    build,
   };
 };
 

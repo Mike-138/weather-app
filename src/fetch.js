@@ -10,6 +10,8 @@ async function getForecast(location) {
   const weatherData = await response.json();
 
   // Today's weather information
+  const cityName = weatherData.location.name;
+  const countryName = weatherData.location.country;
   const currentWeatherData = weatherData.current;
   const lastUpdated = currentWeatherData.last_updated;
   // Metric measurements
@@ -39,6 +41,8 @@ async function getForecast(location) {
   const tomorrowConditionText = tomorrowWeatherData.condition.text;
   const tomorrowConditionIcon = tomorrowWeatherData.condition.icon;
   return {
+    cityName,
+    countryName,
     lastUpdated,
     currentTempC,
     feelsLikeC,

@@ -2,7 +2,7 @@ import { getForecast } from "./fetch";
 import displayController from "./display";
 
 const cursor = displayController();
-const main = cursor.createMain();
+const main = cursor.build();
 document.body.append(main);
 
 
