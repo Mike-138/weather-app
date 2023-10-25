@@ -132,25 +132,26 @@ const displayController = () => {
   const createMain = () => {
 
     // Create elements for styling
-    const makeDivider = (content) => {
+    const makeDivider = (content, color) => {
         const divider = document.createElement("div");
         divider.textContent = content;
-        divider.classList.add("upper", "center", "small");
+        divider.style.background = color;
+        divider.classList.add("divider", "upper", "center", "small");
         return divider;
     }
 
     // Create DOM tree
     _coordinatesContainer.append(
         _longitudeInput,
-        makeDivider("and"),
+        makeDivider("and", "green"),
         _latitudeInput
     );
 
     _mainFieldset.append(
       _cityNameInput,
-      makeDivider("or"),
+      makeDivider("or", "orange"),
       _areaCodeInput,
-      makeDivider("or"),
+      makeDivider("or", "orange"),
       _coordinatesContainer,
     );
 

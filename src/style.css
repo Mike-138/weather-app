@@ -101,3 +101,13 @@ button:hover {
 .small {
     font-size: 0.75em;
 }
+
+.divider {
+  font-weight: bold;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: grid;
+  place-content: center;
+  color: white;
+  border-radius: 50%;
+}
