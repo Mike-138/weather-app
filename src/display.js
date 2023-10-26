@@ -123,6 +123,7 @@ const displayController = () => {
 
   const _formSubmit = (() => {
     const button = document.createElement("button");
+    button.type = "button";
     button.textContent = "Forecast";
     button.classList.add("upper");
     return button;
@@ -244,7 +245,7 @@ const displayController = () => {
   const getResponseForecastContainer = () => _responseForecastContainer;
 
   const _responseForecastedConditionIcon = (() => {
-    const container = document.createElement("div");
+    const container = document.createElement("img");
     return container;
   })();
 

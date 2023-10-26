@@ -5,6 +5,7 @@ const addEventListeners = () => {
 
     async function getResponse(cursor, query) {
 
+        console.log("TRIGGERED");
         const response = await getForecast(query);
     
         const location = cursor.getResponseLocation();
@@ -43,10 +44,12 @@ const addEventListeners = () => {
 
     const displayCursor = displayController();
 
-    const mainForm = displayCursor.getMainForm();
+    const formSubmit = displayCursor.getFormSubmit();
+    console.log(formSubmit);
 
-    mainForm.addEventListener("submit", () => {
+    formSubmit.addEventListener("click", () => {
     
+        console.log("hi");
         const cityNameElement = displayCursor.getCityNameInput();
         const areaCodeElement = displayCursor.getAreaCodeInput();
         const longitudeElement = displayCursor.getLongitudeInput();
