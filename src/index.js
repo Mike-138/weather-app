@@ -1,12 +1,7 @@
-import { getForecast } from "./fetch";
 import displayController from "./display";
+import addEventListeners from "./control";
 
 const cursor = displayController();
 const main = cursor.build();
 document.body.append(main);
-
-
-const london = await getForecast("london");
-console.log(london.lastUpdated);
-console.log(london.tomorrowMinTempC);
-console.log(london.currentConditionText);
+addEventListeners();

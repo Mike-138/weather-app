@@ -64,4 +64,4 @@ async function getForecast(location) {
   };
 }
 
-export { getForecast };
+export default getForecast;

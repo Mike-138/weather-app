@@ -279,15 +279,15 @@ const displayController = () => {
   const getResponseForecastedWind = () => _responseForecastedWind;
 
   // Order response elements
-  const _createMainResponse = () => {
+  const renderMainResponse = () => {
 
     // Create DOM tree
-    _responseHeaderContainer.append(
+    _responseHeaderContainer.replaceChildren(
         _responseLocation,
         _responseDate
     );
 
-    _responseContentContainer.append(
+    _responseContentContainer.replaceChildren(
       _responseConditionIcon,
       _responseTemperature,
       _responseConditionText,
@@ -295,7 +295,7 @@ const displayController = () => {
       _responseWind
   );
 
-  _responseForecastContainer.append(
+  _responseForecastContainer.replaceChildren(
     _responseForecastedConditionIcon,
     _responseForecastedConditionText,
     _responseForecastedMaxTemperature,
@@ -303,7 +303,7 @@ const displayController = () => {
     _responseForecastedWind
 );
 
-    _mainResponse.append(
+    _mainResponse.replaceChildren(
       _responseHeaderContainer,
       _responseContentContainer,
       _responseForecastContainer
@@ -315,7 +315,7 @@ const displayController = () => {
   const build = () => {
 
     const form = _createMainForm();
-    const response = _createMainResponse();
+    const response = renderMainResponse();
 
     _main.append(
       form,
@@ -352,6 +352,7 @@ const displayController = () => {
     getResponseForecastedMaxTemperature,
     getResponseForecastedMinTemperature,
     getResponseForecastedWind,
+    renderMainResponse,
     build,
   };
 };
