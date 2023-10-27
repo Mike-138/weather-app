@@ -137,21 +137,20 @@ const displayController = () => {
 
   // Order form elements
   const _createMainForm = () => {
-
     // Create elements for styling
     const makeDivider = (content, color) => {
-        const divider = document.createElement("div");
-        divider.textContent = content;
-        divider.style.background = color;
-        divider.classList.add("divider", "upper", "center", "small");
-        return divider;
-    }
+      const divider = document.createElement("div");
+      divider.textContent = content;
+      divider.style.background = color;
+      divider.classList.add("divider", "upper", "center", "small");
+      return divider;
+    };
 
     // Create DOM tree
     _coordinatesContainer.append(
-        _longitudeField,
-        makeDivider("and", "green"),
-        _latitudeField
+      _longitudeField,
+      makeDivider("and", "green"),
+      _latitudeField,
     );
 
     _formFieldset.append(
@@ -253,28 +252,32 @@ const displayController = () => {
     return container;
   })();
 
-  const getResponseForecastedConditionIcon = () => _responseForecastedConditionIcon;
+  const getResponseForecastedConditionIcon = () =>
+    _responseForecastedConditionIcon;
 
   const _responseForecastedConditionText = (() => {
     const container = document.createElement("div");
     return container;
   })();
 
-  const getResponseForecastedConditionText = () => _responseForecastedConditionText;
+  const getResponseForecastedConditionText = () =>
+    _responseForecastedConditionText;
 
   const _responseForecastedMaxTemperature = (() => {
     const container = document.createElement("div");
     return container;
   })();
 
-  const getResponseForecastedMaxTemperature = () => _responseForecastedMaxTemperature;
+  const getResponseForecastedMaxTemperature = () =>
+    _responseForecastedMaxTemperature;
 
   const _responseForecastedMinTemperature = (() => {
     const container = document.createElement("div");
     return container;
   })();
 
-  const getResponseForecastedMinTemperature = () => _responseForecastedMinTemperature;
+  const getResponseForecastedMinTemperature = () =>
+    _responseForecastedMinTemperature;
 
   const _responseForecastedWind = (() => {
     const container = document.createElement("div");
@@ -285,50 +288,42 @@ const displayController = () => {
 
   // Order response elements
   const renderMainResponse = () => {
-
     // Create DOM tree
-    _responseHeaderContainer.replaceChildren(
-        _responseLocation,
-        _responseDate
-    );
+    _responseHeaderContainer.replaceChildren(_responseLocation, _responseDate);
 
     _responseContentContainer.replaceChildren(
       _responseConditionIcon,
       _responseTemperature,
       _responseConditionText,
       _responseFeelsLike,
-      _responseWind
-  );
+      _responseWind,
+    );
 
-  _responseForecastContainer.replaceChildren(
-    _responseForecastedConditionIcon,
-    _responseForecastedConditionText,
-    _responseForecastedMaxTemperature,
-    _responseForecastedMinTemperature,
-    _responseForecastedWind
-);
+    _responseForecastContainer.replaceChildren(
+      _responseForecastedConditionIcon,
+      _responseForecastedConditionText,
+      _responseForecastedMaxTemperature,
+      _responseForecastedMinTemperature,
+      _responseForecastedWind,
+    );
 
     _mainResponse.replaceChildren(
       _responseHeaderContainer,
       _responseContentContainer,
-      _responseForecastContainer
+      _responseForecastContainer,
     );
 
     return _mainResponse;
   };
 
   const build = () => {
-
     const form = _createMainForm();
     const response = renderMainResponse();
 
-    _main.append(
-      form,
-      response
-    );
+    _main.append(form, response);
 
     return _main;
-  }
+  };
 
   return {
     getMain,

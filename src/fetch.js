@@ -4,9 +4,12 @@ const FORECAST_QUERY_BASE =
   "https://api.weatherapi.com/v1/forecast.json?key=" + API_KEY;
 
 async function getForecast(location) {
-  const response = await fetch(FORECAST_QUERY_BASE + "&q=" + location + "&days=1", {
-    mode: "cors",
-  });
+  const response = await fetch(
+    FORECAST_QUERY_BASE + "&q=" + location + "&days=1",
+    {
+      mode: "cors",
+    },
+  );
   const weatherData = await response.json();
 
   // Today's weather information

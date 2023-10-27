@@ -25,12 +25,12 @@ main {
 }
 
 fieldset {
-    border: none;
+  border: none;
 }
 
 legend {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 label,
@@ -39,8 +39,8 @@ input {
 }
 
 label {
-    font-size: 0.75rem;
-    margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 input {
@@ -58,25 +58,25 @@ input:focus {
 }
 
 button {
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-    color: white;
-    background-color: black;
-    border: none;
-    outline: none;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;
-    transition: all 200ms;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: black;
+  border: none;
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;
+  transition: all 200ms;
 }
 
 button:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 2px 2px;
-    transform: translate(3px, 3px);
+  box-shadow: rgba(0, 0, 0, 0.35) 2px 2px;
+  transform: translate(3px, 3px);
 }
 
 .field {
-    padding: 0.5rem;
-    border: 1rem solid black;
-    box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;
+  padding: 0.5rem;
+  border: 1rem solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;
 }
 
 .flex-row {
@@ -91,15 +91,15 @@ button:hover {
 }
 
 .upper {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .center {
-    align-self: center;
+  align-self: center;
 }
 
 .small {
-    font-size: 0.75em;
+  font-size: 0.75em;
 }
 
 .divider {

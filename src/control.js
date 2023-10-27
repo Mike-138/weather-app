@@ -2,82 +2,77 @@ import getForecast from "./fetch";
 import displayController from "./display";
 
 const addEventListeners = () => {
+  const displayCursor = displayController();
 
-    async function getResponse(cursor, query) {
+  const formSubmit = displayCursor.getFormSubmit();
 
-        console.log("TRIGGERED");
-        const response = await getForecast(query);
-    
-        const location = cursor.getResponseLocation();
-        const date = cursor.getResponseDate();
-    
-        const conditionIcon = cursor.getResponseConditionIcon();
-        const conditionText = cursor.getResponseConditionText();
-        const temperature = cursor.getResponseTemperature();
-        const feelsLike = cursor.getResponseFeelsLike();
-        const wind = cursor.getResponseWind();
-    
-        const forecastConditionIcon = cursor.getResponseForecastedConditionIcon();
-        const forecastConditionText = cursor.getResponseForecastedConditionText();
-        const forecastMaxTemperature = cursor.getResponseForecastedMaxTemperature();
-        const forecastMinTemperature = cursor.getResponseForecastedMinTemperature();
-        const forecastWind = cursor.getResponseForecastedWind();
-    
-        location.textContent = `${response.cityName}, ${response.countryName}`;
-        date.textContent = response.lastUpdated;
-    
-        conditionIcon.src = response.currentConditionIcon;
-        conditionText.textContent = response.currentConditionText;
-        // TODO: Implement imperial as alternative to metric
-        temperature.textContent = response.currentTempC;
-        feelsLike.textContent = response.feelsLikeC;
-        wind.textContent = response.currentWindKph;
-    
-        forecastConditionIcon.src = response.forecastConditionIcon;
-        forecastConditionText.textContent = response.forecastConditionText;
-        // TODO: Implement imperial as alternative to metric
-        forecastMaxTemperature.textContent = response.forecastMaxTemperature;
-        forecastMinTemperature.textContent = response.forecastMinTemperature;
-        forecastWind.textContent = response.forecastWind;
-    
+  async function getResponse(cursor, query) {
+    const response = await getForecast(query);
+    console.log(response);
+
+    const location = cursor.getResponseLocation();
+    const date = cursor.getResponseDate();
+
+    const conditionIcon = cursor.getResponseConditionIcon();
+    const conditionText = cursor.getResponseConditionText();
+    const temperature = cursor.getResponseTemperature();
+    const feelsLike = cursor.getResponseFeelsLike();
+    const wind = cursor.getResponseWind();
+
+    const forecastConditionIcon = cursor.getResponseForecastedConditionIcon();
+    const forecastConditionText = cursor.getResponseForecastedConditionText();
+    const forecastMaxTemperature = cursor.getResponseForecastedMaxTemperature();
+    const forecastMinTemperature = cursor.getResponseForecastedMinTemperature();
+    const forecastWind = cursor.getResponseForecastedWind();
+
+    location.textContent = `${response.cityName}, ${response.countryName}`;
+    date.textContent = response.lastUpdated;
+
+    conditionIcon.src = `https:${response.currentConditionIcon}`;
+    conditionText.textContent = response.currentConditionText;
+    // TODO: Implement imperial as alternative to metric
+    temperature.textContent = response.currentTempC;
+    feelsLike.textContent = response.feelsLikeC;
+    wind.textContent = response.currentWindKph;
+
+    forecastConditionIcon.src = `https:${response.tomorrowConditionIcon}`;
+    forecastConditionText.textContent = response.tomorrowConditionText;
+    // TODO: Implement imperial as alternative to metric
+    forecastMaxTemperature.textContent = response.tomorrowMaxTempC;
+    forecastMinTemperature.textContent = response.tomorrowMinTempC;
+    forecastWind.textContent = response.tomorrowMaxWindKph;
+  }
+
+  formSubmit.addEventListener("click", () => {
+    const cityNameInput = displayCursor.getCityNameInput();
+    const areaCodeInput = displayCursor.getAreaCodeInput();
+    const longitudeInput = displayCursor.getLongitudeInput();
+    const latitudeInput = displayCursor.getLatitudeInput();
+
+    const cityName = cityNameInput.value;
+    const areaCode = areaCodeInput.value;
+    const longitude = longitudeInput.value;
+    const latitude = latitudeInput.value;
+
+    let query;
+
+    if (cityName) {
+      query = cityName;
+    } else if (areaCode) {
+      query = areaCode;
+    } else if (longitude && latitude) {
+      query = `${longitude},${latitude}`;
+    } else {
+      query = "Toronto";
     }
 
-    const displayCursor = displayController();
+    getResponse(displayCursor, query);
 
-    const formSubmit = displayCursor.getFormSubmit();
-    console.log(formSubmit);
+    displayCursor.renderMainResponse();
+  });
 
-    formSubmit.addEventListener("click", () => {
-    
-        console.log("hi");
-        const cityNameElement = displayCursor.getCityNameInput();
-        const areaCodeElement = displayCursor.getAreaCodeInput();
-        const longitudeElement = displayCursor.getLongitudeInput();
-        const latitudeElement = displayCursor.getLatitudeInput();
-    
-        const cityName = cityNameElement.value;
-        const areaCode = areaCodeElement.value;
-        const longitude = longitudeElement.value;
-        const latitude = latitudeElement.value;
-    
-        let query;
-    
-        if (cityName) {
-            query = cityName;
-        } else if (areaCode) {
-            query = areaCode;
-        } else if (longitude && latitude) {
-            query = `${longitude},${latitude}`;
-        } else {
-            query = "Toronto";
-        }
-    
-        getResponse(displayCursor, query);
-    
-        displayCursor.renderMainResponse();
-    
-    });
-
+  const main = displayCursor.build();
+  document.body.append(main);
 };
 
 export default addEventListeners;
