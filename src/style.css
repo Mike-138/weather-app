@@ -81,7 +81,13 @@ button:hover {
   transform: translate(3px, 3px);
 }
 
-.field {
+.input-field {
+  padding: 0.5rem;
+  border: 1em solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;
+}
+
+.response-field {
   padding: 0.5rem;
   border: 1em solid black;
   box-shadow: rgba(0, 0, 0, 0.35) 5px 5px;

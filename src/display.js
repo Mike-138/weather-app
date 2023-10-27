@@ -43,7 +43,7 @@ const displayController = () => {
     param.id = "city";
 
     const container = document.createElement("div");
-    container.classList.add("field");
+    container.classList.add("input-field");
     container.append(label, param);
     return container;
   })();
@@ -62,7 +62,7 @@ const displayController = () => {
     param.id = "area";
 
     const container = document.createElement("div");
-    container.classList.add("field");
+    container.classList.add("input-field");
     container.append(label, param);
     return container;
   })();
@@ -72,7 +72,7 @@ const displayController = () => {
 
   const _coordinatesContainer = (() => {
     const container = document.createElement("div");
-    container.classList.add("flex-row", "field");
+    container.classList.add("flex-row", "input-field");
     return container;
   })();
 
@@ -87,6 +87,7 @@ const displayController = () => {
     const param = document.createElement("input");
     param.type = "text";
     param.id = "lon";
+    param.size = 8;
     param.pattern =
       "^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$";
 
@@ -107,6 +108,7 @@ const displayController = () => {
     const param = document.createElement("input");
     param.type = "text";
     param.id = "lat";
+    param.size = 8;
     param.pattern =
       "^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$";
 
@@ -178,7 +180,7 @@ const displayController = () => {
 
   const _responseHeaderContainer = (() => {
     const container = document.createElement("div");
-    container.classList.add("flex-row");
+    container.classList.add("flex-row", "response-field");
     return container;
   })();
 
@@ -200,6 +202,7 @@ const displayController = () => {
 
   const _responseContentContainer = (() => {
     const container = document.createElement("div");
+    container.classList.add("response-field");
     return container;
   })();
 
@@ -242,6 +245,7 @@ const displayController = () => {
 
   const _responseForecastContainer = (() => {
     const container = document.createElement("div");
+    container.classList.add("response-field");
     return container;
   })();
 
