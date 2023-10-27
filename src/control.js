@@ -71,6 +71,41 @@ const addEventListeners = () => {
     displayCursor.renderMainResponse();
   });
 
+  // Defaults temp
+  const location = displayCursor.getResponseLocation();
+  const date = displayCursor.getResponseDate();
+
+  const conditionIcon = displayCursor.getResponseConditionIcon();
+  const conditionText = displayCursor.getResponseConditionText();
+  const temperature = displayCursor.getResponseTemperature();
+  const feelsLike = displayCursor.getResponseFeelsLike();
+  const wind = displayCursor.getResponseWind();
+
+  const forecastConditionIcon = displayCursor.getResponseForecastedConditionIcon();
+  const forecastConditionText = displayCursor.getResponseForecastedConditionText();
+  const forecastMaxTemperature = displayCursor.getResponseForecastedMaxTemperature();
+  const forecastMinTemperature = displayCursor.getResponseForecastedMinTemperature();
+  const forecastWind = displayCursor.getResponseForecastedWind();
+
+  location.textContent = "City, Country";
+  date.textContent = "Some Date";
+
+  conditionIcon.src = "https://cdn.weatherapi.com/weather/64x64/day/122.png";
+  conditionText.textContent = "Default Conditions";
+
+  // TODO: Implement imperial as alternative to metric
+  temperature.textContent = "100C";
+  feelsLike.textContent = "100C";
+  wind.textContent = "100KPH";
+
+  forecastConditionIcon.src = "https://cdn.weatherapi.com/weather/64x64/day/122.png";
+  forecastConditionText.textContent = "Default Conditions";
+  // TODO: Implement imperial as alternative to metric
+  forecastMaxTemperature.textContent = "100C";
+  forecastMinTemperature.textContent = "0C";
+  forecastWind.textContent = "100KPH";
+  // END OF TEMP DEFAULTS
+
   const main = displayCursor.build();
   document.body.append(main);
 };
