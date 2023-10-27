@@ -23,7 +23,6 @@ body {
 }
 
 main {
-  padding: 2rem;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -81,6 +80,10 @@ button:hover {
   transform: translate(3px, 3px);
 }
 
+.section-wrapper {
+  padding: 2rem;
+}
+
 .input-field {
   padding: 0.5rem;
   border: 1em solid black;
@@ -95,12 +98,14 @@ button:hover {
 
 .flex-row {
   display: flex;
-  gap: 2rem;
 }
 
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.gap {
   gap: 2rem;
 }
 

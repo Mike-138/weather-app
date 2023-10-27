@@ -72,6 +72,9 @@ const addEventListeners = () => {
   });
 
   // Defaults temp
+  const responseContainer = displayCursor.getMainResponseWrapper();
+  responseContainer.style.background = "blue";
+
   const location = displayCursor.getResponseLocation();
   const date = displayCursor.getResponseDate();
 

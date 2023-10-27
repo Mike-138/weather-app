@@ -11,9 +11,15 @@ const displayController = () => {
   const getMain = () => _main;
 
   // Initialize form elements
+const _mainFormWrapper = (() => {
+  const container = document.createElement("div");
+  container.classList.add("section-wrapper");
+  return container;
+})();
+
   const _mainForm = (() => {
     const container = document.createElement("form");
-    container.classList.add("flex-col");
+    container.classList.add("flex-col", "gap");
     return container;
   })();
 
@@ -21,7 +27,7 @@ const displayController = () => {
 
   const _formFieldset = (() => {
     const container = document.createElement("fieldset");
-    container.classList.add("flex-col");
+    container.classList.add("flex-col", "gap");
 
     const legend = document.createElement("legend");
     legend.textContent = "Search For The Weather";
@@ -165,14 +171,23 @@ const displayController = () => {
 
     _formSubmitContainer.append(_formSubmit);
     _mainForm.append(_formFieldset, _formSubmitContainer);
+    _mainFormWrapper.append(_mainForm);
 
-    return _mainForm;
+    return _mainFormWrapper;
   };
 
   // Initialize response elements
+  const _mainResponseWrapper = (() => {
+    const container = document.createElement("div");
+    container.classList.add("section-wrapper");
+    return container;
+  })();
+
+  const getMainResponseWrapper = () => _mainResponseWrapper;
+
   const _mainResponse = (() => {
     const container = document.createElement("div");
-    container.classList.add("flex-col");
+    container.classList.add("flex-col", "gap");
     return container;
   })();
 
@@ -317,7 +332,11 @@ const displayController = () => {
       _responseForecastContainer,
     );
 
-    return _mainResponse;
+    _mainResponseWrapper.replaceChildren(
+      _mainResponse
+    );
+
+    return _mainResponseWrapper;
   };
 
   const build = () => {
@@ -344,6 +363,7 @@ const displayController = () => {
     getLatitudeInput,
     getFormSubmitContainer,
     getFormSubmit,
+    getMainResponseWrapper,
     getMainResponse,
     getResponseHeaderContainer,
     getResponseLocation,
