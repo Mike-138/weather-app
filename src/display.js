@@ -32,7 +32,7 @@ const displayController = () => {
 
   const getFormFieldset = () => _formFieldset;
 
-  const _cityNameInput = (() => {
+  const _cityNameField = (() => {
     const label = document.createElement("label");
     label.textContent = "City Name";
     label.classList.add("upper");
@@ -48,9 +48,10 @@ const displayController = () => {
     return container;
   })();
 
-  const getCityNameInput = () => _cityNameInput;
+  const getCityNameField = () => _cityNameField;
+  const getCityNameInput = () => _cityNameField.lastChild;
 
-  const _areaCodeInput = (() => {
+  const _areaCodeField = (() => {
     const label = document.createElement("label");
     label.textContent = "Area Code";
     label.classList.add("upper");
@@ -66,7 +67,8 @@ const displayController = () => {
     return container;
   })();
 
-  const getAreaCodeInput = () => _areaCodeInput;
+  const getAreaCodeField = () => _areaCodeField;
+  const getAreaCodeInput = () => _areaCodeField.lastChild;
 
   const _coordinatesContainer = (() => {
     const container = document.createElement("div");
@@ -76,7 +78,7 @@ const displayController = () => {
 
   const getCoordinatesContainer = () => _coordinatesContainer;
 
-  const _longitudeInput = (() => {
+  const _longitudeField = (() => {
     const label = document.createElement("label");
     label.textContent = "Longitude";
     label.classList.add("upper");
@@ -93,9 +95,10 @@ const displayController = () => {
     return container;
   })();
 
-  const getLongitudeInput = () => _longitudeInput;
+  const getLongitudeField = () => _longitudeField;
+  const getLongitudeInput = () => _longitudeField.lastChild;
 
-  const _latitudeInput = (() => {
+  const _latitudeField = (() => {
     const label = document.createElement("label");
     label.textContent = "Latitude";
     label.classList.add("upper");
@@ -112,7 +115,8 @@ const displayController = () => {
     return container;
   })();
 
-  const getLatitudeInput = () => _latitudeInput;
+  const getLatitudeField = () => _latitudeField;
+  const getLatitudeInput = () => _latitudeField.lastChild;
 
   const _formSubmitContainer = (() => {
     const container = document.createElement("div");
@@ -145,15 +149,15 @@ const displayController = () => {
 
     // Create DOM tree
     _coordinatesContainer.append(
-        _longitudeInput,
+        _longitudeField,
         makeDivider("and", "green"),
-        _latitudeInput
+        _latitudeField
     );
 
     _formFieldset.append(
-      _cityNameInput,
+      _cityNameField,
       makeDivider("or", "orange"),
-      _areaCodeInput,
+      _areaCodeField,
       makeDivider("or", "orange"),
       _coordinatesContainer,
     );
@@ -330,10 +334,14 @@ const displayController = () => {
     getMain,
     getMainForm,
     getFormFieldset,
+    getCityNameField,
     getCityNameInput,
+    getAreaCodeField,
     getAreaCodeInput,
     getCoordinatesContainer,
+    getLongitudeField,
     getLongitudeInput,
+    getLatitudeField,
     getLatitudeInput,
     getFormSubmitContainer,
     getFormSubmit,

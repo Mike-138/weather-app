@@ -50,15 +50,15 @@ const addEventListeners = () => {
 
     formSubmit.addEventListener("click", () => {
     
-        const cityNameField = displayCursor.getCityNameInput();
-        const areaCodeField = displayCursor.getAreaCodeInput();
-        const longitudeField = displayCursor.getLongitudeInput();
-        const latitudeField = displayCursor.getLatitudeInput();
+        const cityNameInput = displayCursor.getCityNameInput();
+        const areaCodeInput = displayCursor.getAreaCodeInput();
+        const longitudeInput = displayCursor.getLongitudeInput();
+        const latitudeInput = displayCursor.getLatitudeInput();
     
-        const cityName = cityNameField.lastChild.value;
-        const areaCode = areaCodeField.lastChild.value;
-        const longitude = longitudeField.lastChild.value;
-        const latitude = latitudeField.lastChild.value;
+        const cityName = cityNameInput.value;
+        const areaCode = areaCodeInput.value;
+        const longitude = longitudeInput.value;
+        const latitude = latitudeInput.value;
     
         let query;
     
