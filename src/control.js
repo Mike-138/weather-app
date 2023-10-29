@@ -1,5 +1,7 @@
 import getForecast from "./fetch";
 import displayController from "./display";
+import backgroundDay from "./assets/images/day-background.jpg";
+import backgroundNight from "./assets/images/night-background.jpg";
 
 const addEventListeners = () => {
   const displayCursor = displayController();
@@ -73,7 +75,8 @@ const addEventListeners = () => {
 
   // Defaults temp
   const responseContainer = displayCursor.getMainResponseWrapper();
-  responseContainer.style.background = "blue";
+  responseContainer.style.background = `url(${backgroundDay})`;
+  responseContainer.style.backgroundSize = "cover";
 
   const location = displayCursor.getResponseLocation();
   const date = displayCursor.getResponseDate();
