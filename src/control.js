@@ -12,6 +12,16 @@ const addEventListeners = () => {
     const response = await getForecast(query);
     console.log(response);
 
+    const responseContainer = cursor.getMainResponseWrapper();
+
+    if (response.isDay) {
+      responseContainer.style.background = `url(${backgroundDay})`;
+    }
+    else {
+      responseContainer.style.background = `url(${backgroundNight})`;
+    }
+    responseContainer.style.backgroundSize = "cover";
+
     const location = cursor.getResponseLocation();
     const date = cursor.getResponseDate();
 
