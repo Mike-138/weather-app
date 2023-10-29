@@ -195,7 +195,7 @@ const _mainFormWrapper = (() => {
 
   const _responseHeaderContainer = (() => {
     const container = document.createElement("div");
-    container.classList.add("flex-row", "response-field");
+    container.classList.add("flex-row", "gap", "response-field");
     return container;
   })();
 
@@ -210,6 +210,7 @@ const _mainFormWrapper = (() => {
 
   const _responseDate = (() => {
     const container = document.createElement("h2");
+    container.classList.add("center");
     return container;
   })();
 
@@ -217,11 +218,19 @@ const _mainFormWrapper = (() => {
 
   const _responseContentContainer = (() => {
     const container = document.createElement("div");
-    container.classList.add("response-field");
+    container.classList.add("response-field", "current-weather");
     return container;
   })();
 
   const getResponseContentContainer = () => _responseContentContainer;
+
+  const _responseSubcontentContainer = (() => {
+    const container = document.createElement("div");
+    container.classList.add("flex-col");
+    return container;
+  })();
+
+  const getResponseSubcontentContainer = () => _responseSubcontentContainer;
 
   const _responseConditionIcon = (() => {
     const container = document.createElement("img");
@@ -239,6 +248,7 @@ const _mainFormWrapper = (() => {
 
   const _responseTemperature = (() => {
     const container = document.createElement("div");
+    container.classList.add("large");
     return container;
   })();
 
@@ -310,12 +320,16 @@ const _mainFormWrapper = (() => {
     // Create DOM tree
     _responseHeaderContainer.replaceChildren(_responseLocation, _responseDate);
 
-    _responseContentContainer.replaceChildren(
-      _responseConditionIcon,
-      _responseTemperature,
+    _responseSubcontentContainer.replaceChildren(
       _responseConditionText,
       _responseFeelsLike,
       _responseWind,
+    );
+
+    _responseContentContainer.replaceChildren(
+      _responseConditionIcon,
+      _responseTemperature,
+      _responseSubcontentContainer,
     );
 
     _responseForecastContainer.replaceChildren(
@@ -369,6 +383,7 @@ const _mainFormWrapper = (() => {
     getResponseLocation,
     getResponseDate,
     getResponseContentContainer,
+    getResponseSubcontentContainer,
     getResponseConditionIcon,
     getResponseConditionText,
     getResponseTemperature,
