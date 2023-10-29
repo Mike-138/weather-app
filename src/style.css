@@ -107,6 +107,10 @@ button:hover {
   margin-left: auto;
 }
 
+.feels-like::before {
+  content: "Feels like ";
+}
+
 .flex-row {
   display: flex;
 }

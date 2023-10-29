@@ -256,6 +256,7 @@ const _mainFormWrapper = (() => {
 
   const _responseFeelsLike = (() => {
     const container = document.createElement("div");
+    container.classList.add("feels-like");
     return container;
   })();
 
