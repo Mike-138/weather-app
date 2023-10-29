@@ -40,7 +40,7 @@ const _mainFormWrapper = (() => {
 
   const _cityNameField = (() => {
     const label = document.createElement("label");
-    label.textContent = "City Name";
+    label.textContent = "Place Name";
     label.classList.add("upper");
     label.setAttribute("for", "city");
 
