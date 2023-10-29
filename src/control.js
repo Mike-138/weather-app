@@ -81,6 +81,11 @@ const addEventListeners = () => {
     getResponse(displayCursor, query);
 
     displayCursor.renderMainResponse();
+
+    cityNameInput.value = "";
+    areaCodeInput.value = "";
+    longitudeInput.value = "";
+    latitudeInput.value = "";
   });
 
   // Defaults temp
