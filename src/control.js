@@ -84,7 +84,9 @@ const addEventListeners = () => {
   const conditionIcon = displayCursor.getResponseConditionIcon();
   const conditionText = displayCursor.getResponseConditionText();
   const temperature = displayCursor.getResponseTemperature();
+  temperature.classList.add("celsius");
   const feelsLike = displayCursor.getResponseFeelsLike();
+  feelsLike.classList.add("celsius");
   const wind = displayCursor.getResponseWind();
 
   const forecastConditionIcon = displayCursor.getResponseForecastedConditionIcon();
@@ -100,8 +102,8 @@ const addEventListeners = () => {
   conditionText.textContent = "Default Conditions";
 
   // TODO: Implement imperial as alternative to metric
-  temperature.textContent = "100C";
-  feelsLike.textContent = "100C";
+  temperature.textContent = "100";
+  feelsLike.textContent = "100";
   wind.textContent = "100KPH";
 
   forecastConditionIcon.src = "https://cdn.weatherapi.com/weather/64x64/day/122.png";

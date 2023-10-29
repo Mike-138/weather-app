@@ -145,3 +145,11 @@ button:hover {
   color: white;
   border-radius: 50%;
 }
+
+.celsius::after {
+  content: "°C";
+}
+
+.fahrenheit::after {
+  content: "°F";
+}
