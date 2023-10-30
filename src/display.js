@@ -187,9 +187,36 @@ const _mainFormWrapper = (() => {
   const getMainResponseLoadWrapper = () => _mainResponseLoadWrapper;
 
   const _mainResponseLoadIcon = (() => {
-    const container = document.createElement("img");
+    const container = document.createElement("div");
     container.classList.add("absolute-center");
-    container.src = LoadingIcon;
+
+    const icon = document.createElement("img");
+    icon.src = LoadingIcon;
+
+    const ref = document.createElement("p");
+    const refPreloader = document.createElement("a");
+    const refSite = document.createElement("a");
+
+    refPreloader.target = "_blank";
+    refPreloader.href = "https://icons8.com/icon/c2nw5AE1yVav/spinner";
+    refPreloader.textContent = "preloader";
+
+    refSite.target = "_blank";
+    refSite.href = "https://icons8.com";
+    refSite.textContent = "Icons8";
+
+    ref.append(
+      refPreloader,
+      " icon by ",
+      refSite
+      );
+
+    container.append(
+      icon,
+      ref
+    );
+
+    container.style.textAlign = "center";
     return container;
   })();
 
