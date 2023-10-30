@@ -9,8 +9,13 @@ const addEventListeners = () => {
   const formSubmit = displayCursor.getFormSubmit();
 
   async function getResponse(cursor, query) {
+
+    const responseLoadContainer = cursor.getMainResponseLoadWrapper();
+    responseLoadContainer.classList.toggle("hidden");
+
     const response = await getForecast(query);
-    console.log(response);
+    
+    responseLoadContainer.classList.toggle("hidden");
 
     const responseContainer = cursor.getMainResponseWrapper();
 

@@ -1,4 +1,5 @@
 import "./style.css";
+import LoadingIcon from "./assets/gifs/loading.gif";
 
 const displayController = () => {
   // Initialize page structure
@@ -177,6 +178,23 @@ const _mainFormWrapper = (() => {
   };
 
   // Initialize response elements
+  const _mainResponseLoadWrapper = (() => {
+    const container = document.createElement("div");
+    container.classList.add("hidden", "cover");
+    return container;
+  })();
+
+  const getMainResponseLoadWrapper = () => _mainResponseLoadWrapper;
+
+  const _mainResponseLoadIcon = (() => {
+    const container = document.createElement("img");
+    container.classList.add("absolute-center");
+    container.src = LoadingIcon;
+    return container;
+  })();
+
+  const getMainResponseLoadIcon = () => _mainResponseLoadIcon;
+
   const _mainResponseWrapper = (() => {
     const container = document.createElement("div");
     container.classList.add("section-wrapper");
@@ -347,7 +365,12 @@ const _mainFormWrapper = (() => {
       _responseForecastContainer,
     );
 
+    _mainResponseLoadWrapper.replaceChildren(
+      _mainResponseLoadIcon
+    );
+
     _mainResponseWrapper.replaceChildren(
+      _mainResponseLoadWrapper,
       _mainResponse
     );
 
@@ -378,6 +401,8 @@ const _mainFormWrapper = (() => {
     getLatitudeInput,
     getFormSubmitContainer,
     getFormSubmit,
+    getMainResponseLoadWrapper,
+    getMainResponseLoadIcon,
     getMainResponseWrapper,
     getMainResponse,
     getResponseHeaderContainer,
